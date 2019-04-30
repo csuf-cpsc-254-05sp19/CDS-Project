@@ -9,19 +9,19 @@ Calvin Ngo
 
 OVERVIEW: 
 We will improve upon a game of Snake, adding in obstacles & multiple 
-apples that will add different lengths to the snake. The obstalces 
+apples that will add or delete different lengths to the snake. The obstacles 
 will be there to make the game a little more difficult than normal. 
 The apples can appear 2-3 times and when all are eaten, the next few 
-will appear. Apples will have different colors. The different colors 
-will add different lengths to the snake. All of this could be changed.
+will appear. Apples may have different colors. The different colors will 
+add or remove different lengths to the snake. All of this could be changed.
 
 GOALS: 
 To create a game that people can enjoy 
 
 RESOURCES: 
-TBD
+https://github.com/gogakoreli/snake
 
 New Features: 
 Obstacles 
-Apples adding various lengths
+Apples adding/removing various lengths
 Maybe reverse it
