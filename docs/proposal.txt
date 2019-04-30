@@ -1,0 +1,27 @@
+# CDS-Project
+
+CDS-Project created by GitHub Classroom
+
+TEAM INFO: 
+Minh-Duc Le 
+Samantha Ibasitas 
+Calvin Ngo 
+
+OVERVIEW: 
+We will improve upon a game of Snake, adding in obstacles & multiple 
+apples that will add different lengths to the snake. The obstalces 
+will be there to make the game a little more difficult than normal. 
+The apples can appear 2-3 times and when all are eaten, the next few 
+will appear. Apples will have different colors. The different colors 
+will add different lengths to the snake. All of this could be changed.
+
+GOALS: 
+To create a game that people can enjoy 
+
+RESOURCES: 
+TBD
+
+New Features: 
+Obstacles 
+Apples adding various lengths
+Maybe reverse it
