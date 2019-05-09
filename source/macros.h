@@ -1,8 +1,8 @@
 #ifndef _macros_h
 #define _macros_h
 
-#define MAP_WIDTH 55
-#define MAP_HEIGHT 55
+#define MAP_WIDTH 30
+#define MAP_HEIGHT 30
 #define MAP_CHAR '.'
 #define MAP_END 30
 #define SNAKE_CHAR 'O'
@@ -15,6 +15,6 @@
 
 #define INITIAL_SNAKE_LENGTH 15
 
-#define PAUSE_LENGTH 1000 * 50 // 30 milliseconds
+#define PAUSE_LENGTH 1000 * 75 // thi changes the speed
 
 #endif
