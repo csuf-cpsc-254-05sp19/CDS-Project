@@ -11,7 +11,6 @@ public:
   void redraw();
   pair<int, int> snake_food;
   void update_snake_food(bool force_update);
-  void update_snake_food2(bool force_update);
   void update_score();
 
 private:

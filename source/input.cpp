@@ -5,6 +5,8 @@
 #include <string>
 #include <stdio.h>
 
+// INPUT.CPP
+
 using namespace std;
 
 struct termios t;

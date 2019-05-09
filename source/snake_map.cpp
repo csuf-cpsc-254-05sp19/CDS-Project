@@ -6,10 +6,16 @@
 #include <stdlib.h>
 #include <time.h>
 #include "macros.h"
+#include "snake.h"
+
+// SNAKE MAP.CPP
 
 using namespace std;
 
+vector<pair<int, int>> snake_parts;
+
 //initializes snake map
+
 SnakeMap::SnakeMap(Snake *snake)
 {
     this->snake = snake;
@@ -19,6 +25,7 @@ SnakeMap::SnakeMap(Snake *snake)
 }
 
 //redraws the snake map after every movement of the snake
+
 void SnakeMap::redraw(void)
 {
     clear_map(this->map_array);
@@ -27,15 +34,16 @@ void SnakeMap::redraw(void)
         cout << endl;
     }
     update_score();
-    vector<pair<int, int>> snake_parts = snake->snake_parts;
+    
+    snake_parts = snake->snake_parts;
+    
     for (int i = 0; i < snake_parts.size(); i++)
     {
-        pair<int, int> tmp = snake_parts[i];
-        map_array[tmp.first][tmp.second] = SNAKE_CHAR;
+      pair<int, int> tmp = snake_parts[i];
+      map_array[tmp.first][tmp.second] = SNAKE_CHAR;	 
     }
     update_snake_head(map_array, snake);
     update_snake_food(false);
-    update_snake_food2(false);
     map_array[snake_food.first][snake_food.second] = SNAKE_FOOD_CHAR;
     for (int i = 0; i < MAP_HEIGHT; i++)
     {
@@ -48,27 +56,8 @@ void SnakeMap::redraw(void)
 }
 
 //updates the first apple
-void SnakeMap::update_snake_food(bool force_update)
-{
-    if (snake->food_eaten || force_update)
-    {
-        while (true)
-        {
-	  int random_i = rand() % MAP_WIDTH;
-          int random_j = rand() % MAP_HEIGHT;
-            if (map_array[random_i][random_j] == MAP_CHAR)
-            {
-                snake_food = make_pair(random_i, random_j);
-                snake->set_snake_food(snake_food);
-                snake->food_eaten = false;
-	        break;
-            }
-        }
-    }
-}
 
-//updates the second apple
-void SnakeMap::update_snake_food2(bool force_update)
+void SnakeMap::update_snake_food(bool force_update)
 {
     if (snake->food_eaten || force_update)
     {
@@ -118,12 +107,13 @@ void update_snake_head(char map_array[MAP_HEIGHT][MAP_WIDTH], Snake *snake)
     case South:
         snake_head_char = SNAKE_HEAD_SOUTH;
         break;
-    }
+   }
     pair<int, int> snake_head = snake->snake_head;
     map_array[snake_head.first][snake_head.second] = snake_head_char;
 }
 
 //shows score at the end of the game
+
 void SnakeMap::update_score(void)
 {
     cout << "Score:" << snake->length << endl;

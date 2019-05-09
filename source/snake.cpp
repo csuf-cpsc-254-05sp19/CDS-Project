@@ -6,9 +6,17 @@
 #include "snake_map.h"
 #include "macros.h"
 
+// SNAKE.CPP
+
+
+
 using namespace std;
 
+
+
+
 //takes in the input of direction of snake
+
 void *input_thread_work(void *arg)
 {
     struct Snake *snake = (struct Snake *)arg;
@@ -20,6 +28,7 @@ void *input_thread_work(void *arg)
 }
 
 //creates snake
+
 Snake::Snake(void)
 {
     direction = East;
@@ -34,6 +43,7 @@ Snake::Snake(void)
 }
 
 //updates snake direction
+
 void Snake::update_direction(enum Direction direction)
 {
     sem_wait(&this->snake_sema);
@@ -68,12 +78,14 @@ void Snake::update_direction(enum Direction direction)
 }
 
 //updates the next direction after the first direction
+
 void Snake::update_next_direction(enum Direction direction)
 {
     this->next_direction = direction;
 }
 
 //gets the current direction the snake is going
+
 enum Direction Snake::get_direction(void)
 {
     enum Direction result = East;
@@ -84,6 +96,7 @@ enum Direction Snake::get_direction(void)
 }
 
 //ensures that direction of snake is true
+
 void Snake::validate_direction(void)
 {
     if (next_direction != Error)
@@ -93,6 +106,7 @@ void Snake::validate_direction(void)
 }
 
 //sets the snake's movement
+
 void Snake::update_movement(void)
 {
     pair<int, int> movement_part;
@@ -115,15 +129,23 @@ void Snake::update_movement(void)
     snake_head = movement_part;
     snake_parts.push_back(movement_part);
     food_eaten = snake_head.first == snake_food.first && snake_head.second == snake_food.second;
+    
     //decreases the snake's length
     //snake starts at big size, when it eats an apple, it decreases in size instead
+    
     if (food_eaten)
     {
         length--;
+	snake_parts.pop_back();
+	snake_parts.pop_back();
+	if(length == 0){
+	  is_dead = true;
+	  cout << "YOU WIN!" << endl;;
+	}
     }
     else
     {
-        pair<int, int> tail = snake_parts.front();
+        pair<int, int> tail = snake_parts.back();
         snake_world_array[tail.first][tail.second]--;
         snake_parts.erase(snake_parts.begin());
     }
@@ -135,12 +157,14 @@ void Snake::update_movement(void)
 }
 
 //sets the snake food on the snake map
+
 void Snake::set_snake_food(pair<int, int> snake_food)
 {
     this->snake_food = snake_food;
 }
 
-//clears out the snake map 
+//clears out the snake map
+
 void Snake::clear_snake_world(void)
 {
     for (int i = 0; i < MAP_HEIGHT; i++)
@@ -153,6 +177,7 @@ void Snake::clear_snake_world(void)
 }
 
 //creates snake & the map
+
 void Snake::initialize_snake(void)
 {
     for (int i = 0; i < INITIAL_SNAKE_LENGTH; i++)
