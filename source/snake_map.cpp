@@ -9,6 +9,7 @@
 
 using namespace std;
 
+//initializes snake map
 SnakeMap::SnakeMap(Snake *snake)
 {
     this->snake = snake;
@@ -17,6 +18,7 @@ SnakeMap::SnakeMap(Snake *snake)
     update_snake_food(true);
 }
 
+//redraws the snake map after every movement of the snake
 void SnakeMap::redraw(void)
 {
     clear_map(this->map_array);
@@ -45,6 +47,7 @@ void SnakeMap::redraw(void)
     }
 }
 
+//updates the first apple
 void SnakeMap::update_snake_food(bool force_update)
 {
     if (snake->food_eaten || force_update)
@@ -64,6 +67,7 @@ void SnakeMap::update_snake_food(bool force_update)
     }
 }
 
+//updates the second apple
 void SnakeMap::update_snake_food2(bool force_update)
 {
     if (snake->food_eaten || force_update)
@@ -83,6 +87,7 @@ void SnakeMap::update_snake_food2(bool force_update)
     }
 }
 
+//clears snake map 
 void clear_map(char map_array[MAP_HEIGHT][MAP_WIDTH])
 {
     for (int i = 0; i < MAP_HEIGHT; i++)
@@ -94,6 +99,7 @@ void clear_map(char map_array[MAP_HEIGHT][MAP_WIDTH])
     }
 }
 
+//updates the snake head when snake changes direction
 void update_snake_head(char map_array[MAP_HEIGHT][MAP_WIDTH], Snake *snake)
 {
     char snake_head_char = SNAKE_CHAR;
@@ -117,6 +123,7 @@ void update_snake_head(char map_array[MAP_HEIGHT][MAP_WIDTH], Snake *snake)
     map_array[snake_head.first][snake_head.second] = snake_head_char;
 }
 
+//shows score at the end of the game
 void SnakeMap::update_score(void)
 {
     cout << "Score:" << snake->length << endl;

@@ -22,6 +22,7 @@ void initialize()
     input_enter_off();
 }
 
+//checks if the game is over/the snake is dead
 bool is_game_end()
 {
     bool result = false;
@@ -37,11 +38,15 @@ bool is_game_end()
     return result;
 }
 
+//shows this message when game is over
 void game_over()
 {
-    cout << "GAME IS OVER" << endl;
+    cout << "GAME OVER!" << endl;
 }
 
+//begins the game
+//updates the snake movement 
+//checks if game is over, ends the game when it is
 void start_game()
 {
     while (true)

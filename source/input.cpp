@@ -23,6 +23,7 @@ void input_enter_on()
     tcsetattr(STDIN_FILENO, TCSANOW, &t);
 }
 
+//makes the snake move in the inputted direction
 enum Direction get_input()
 {
     enum Direction result = East;
