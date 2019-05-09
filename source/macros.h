@@ -13,8 +13,8 @@
 #define SNAKE_HEAD_SOUTH '^'
 #define SNAKE_FOOD_CHAR '@'
 
-#define INITIAL_SNAKE_LENGTH 15
+#define INITIAL_SNAKE_LENGTH 7
 
-#define PAUSE_LENGTH 1000 * 75 // thi changes the speed
+#define PAUSE_LENGTH 1000 * 55 // this changes the speed
 
 #endif
